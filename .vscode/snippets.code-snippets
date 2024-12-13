@@ -1,0 +1,136 @@
+{
+	// Place your LaTeX ワークスペース snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// },
+	"Environment": {
+		"scope": "latex",
+		"prefix": "env",
+		"body": [
+			"\\begin{$1}",
+			"\t$2",
+			"\\end{$1}"
+		],
+		"description": "Environment"
+	},
+	"Equal Array": {
+		"scope": "latex",
+		"prefix": "eqarr",
+		"body": [
+			"\\begin{eqnarray}",
+			"\t$2",
+			"\\end{eqnarray}"
+		],
+		"description": "Env<eqnarray>"
+	},
+	"Section": {
+		"scope": "latex",
+		"prefix": "sec",
+		"body": [
+			"\\section{$1}",
+			"$2"
+		],
+		"description": "Section"
+	},
+	"Subsection": {
+		"scope": "latex",
+		"prefix": "ssec",
+		"body": [
+			"\\subsection{$1}",
+			"$2"
+		],
+		"description": "Subsection"
+	},
+	"Subsubsection": {
+		"scope": "latex",
+		"prefix": "sssec",
+		"body": [
+			"\\subsubsection{$1}",
+			"$2"
+		],
+		"description": "Subsubsection"
+	},
+	"Equation": {
+		"scope": "latex",
+		"prefix": "eq",
+		"body": [
+			"\\begin{equation}",
+			"\t$1",
+			"\\end{equation}"
+		],
+		"description": "Equation"
+	},
+	"Eqnarray": {
+		"scope": "latex",
+		"prefix": "eqa",
+		"body": [
+			"\\begin{eqnarray}",
+			"\t$1",
+			"\\end{eqnarray}"
+		],
+		"description": "Eqnarray"
+	},
+	"Figure Image": {
+		"scope": "latex",
+		"prefix": "fimg",
+		"body": [
+			"\\begin{figure}[htbp]",
+			"\t\\centering",
+			"\t\\includegraphics[width=6cm]{$1.pdf}",
+			"\t\\caption{$2} \\label{fig: $1}",
+			"\\end{figure}",
+		],
+		"description": "Figure > Image"
+	},
+	"Image": {
+		"scope": "latex",
+		"prefix": "img",
+		"body": [
+			"\\includegraphics[width=10cm]{$1.png}",
+		],
+		"description": "Image"
+	},
+	"Figure": {
+		"scope": "latex",
+		"prefix": "fig",
+		"body": [
+			"\\begin{figure}[htbp]",
+			"\t\\centering",
+			"\t$1",
+			"\\end{figure}",
+		],
+		"description": "Figure"
+	},
+	"MiniPage": {
+		"scope": "latex",
+		"prefix": "minipage",
+		"body": [
+			"\\begin{minipage}{0.45\\textwidth}",
+			"\t\\centering",
+			"\t$1",
+			"\\end{minipage}",
+		],
+		"description": "MiniPage"
+	},
+	"Ref to Figure": {
+		"scope": "latex",
+		"prefix": "fref",
+		"body": [
+			"\\ref{fig: $1}",
+			"$2"
+		],
+		"description": "MiniPage"
+	},
+}

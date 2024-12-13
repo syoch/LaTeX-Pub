@@ -1,0 +1,16 @@
+set terminal eps
+set output "table.eps"
+
+set nokey
+
+set grid linewidth 2
+
+set xzeroaxis
+set yzeroaxis
+
+set key outside bottom
+
+set xlabel "電圧 [V]"
+set ylabel "電流 [mA]"
+
+plot "table.plot" with linespoints pointtype 1 linecolor rgb "#000000" title "a"
