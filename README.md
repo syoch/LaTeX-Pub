@@ -10,7 +10,7 @@
 
 ### CSV to LaTeX
 
-`data/xxx/table.csv` を読み込み、LaTeXの表環境ソース (tabular) のテンプレートを作成し、 `data/xxx/table.tex` に出力します。
+`data/xxx/table.csv` を作成して保存すると、LaTeXの表環境ソース (tabular) のテンプレートが自動生成されます。出力先は `data/xxx/table.tex` です。
 
 CSV ファイルの書式は以下の例を参照してください。
 
