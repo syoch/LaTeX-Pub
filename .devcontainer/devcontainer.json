@@ -16,6 +16,7 @@
 		"vscode": {
 			"extensions": [
 				"james-yu.latex-workshop",
+				"emeraldwalk.runonsave",
 				"hediet.vscode-drawio",
 				"charliermarsh.ruff",
 				"ms-python.vscode-pylance",
@@ -76,7 +77,25 @@
 							"cd .. && export PROJECT=$(basename $(pwd)) && cd .. && make"
 						]
 					}
-				]
+				],
+				"emeraldwalk.runonsave": {
+					"autoClearConsole": true,
+					"commands": [
+						{
+							"match": ".drawio$",
+							"cmd": "export PROJECT=$(basename $(dirname $(dirname ${file}))) && cd ${workspaceFolder} && make",
+							"message": "Compiling TeX file",
+							"autoShowOutputPanel": "always"
+						},
+						{
+							"match": ".csv$",
+							"cmd": "python3 ${workspaceFolder}/scripts/csv_to_tex.py ${file} $(dirname ${file})/${fileBasenameNoExt}.tex",
+							"autoShowOutputPanel": "always",
+							"message": "Converting CSV to TeX",
+							"messageAfter": "CSV converted to TeX"
+						}
+					]
+				}
 			}
 		}
 	}
