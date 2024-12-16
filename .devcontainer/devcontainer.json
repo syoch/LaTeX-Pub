@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-in-docker
 {
-	"name": "Docker in Docker",
+	"name": "LaTeX DevContainer",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"postCreateCommand": "bash .devcontainer/post_create.sh",
@@ -15,12 +15,88 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"wk-j.save-and-run",
+				"james-yu.latex-workshop",
+				"emeraldwalk.runonsave",
 				"hediet.vscode-drawio",
 				"charliermarsh.ruff",
 				"ms-python.vscode-pylance",
 				"mechatroner.rainbow-csv"
-			]
+			],
+			"settings": {
+				"[tex]": {
+					"editor.suggest.snippetsPreventQuickSuggestions": false,
+					"editor.tabSize": 2
+				},
+				"[latex]": {
+					"editor.suggest.snippetsPreventQuickSuggestions": false,
+					"editor.tabSize": 2
+				},
+				"[bibtex]": {
+					"editor.tabSize": 2
+				},
+				"latex-workshop.latex.autoBuild.run": "onSave",
+				"latex-workshop.intellisense.package.enabled": true,
+				"latex-workshop.latex.clean.fileTypes": [
+					"*.aux",
+					"*.bbl",
+					"*.blg",
+					"*.idx",
+					"*.ind",
+					"*.lof",
+					"*.lot",
+					"*.out",
+					"*.toc",
+					"*.acn",
+					"*.acr",
+					"*.alg",
+					"*.glg",
+					"*.glo",
+					"*.gls",
+					"*.ist",
+					"*.fls",
+					"*.log",
+					"*.fdb_latexmk",
+					"*.snm",
+					"*.nav",
+					"*.dvi",
+					"*.synctex.gz"
+				],
+				"latex-workshop.latex.recipes": [
+					{
+						"name": "make",
+						"tools": ["make"]
+					}
+				],
+				"latex-workshop.latex.outDir": ".",
+				"latex-workshop.latex.tools": [
+					{
+						"name": "make",
+						"command": "bash",
+						"args": [
+							"-c",
+							"cd .. && export PROJECT=$(basename $(pwd)) && cd .. && make"
+						]
+					}
+				],
+				"emeraldwalk.runonsave": {
+					"autoClearConsole": true,
+					"commands": [
+						{
+							"match": ".drawio$",
+							"cmd": "export PROJECT=$(basename $(dirname $(dirname ${file}))) && cd ${workspaceFolder} && make",
+							"message": "Compiling TeX file",
+							"autoShowOutputPanel": "always"
+						},
+						{
+							"match": ".csv$",
+							"cmd": "python3 ${workspaceFolder}/scripts/csv_to_tex.py ${file} $(dirname ${file})/${fileBasenameNoExt}.tex",
+							"autoShowOutputPanel": "always",
+							"message": "Converting CSV to TeX",
+							"messageAfter": "CSV converted to TeX"
+						}
+					]
+				}
+			}
 		}
 	}
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

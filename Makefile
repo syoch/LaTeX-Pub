@@ -2,21 +2,26 @@ all: all_
 
 # Configuration
 
-PROJECT?=Report-Example
+# PROJECT?=Report-Example
 LATEX_ROOT?=$(PROJECT)/main
+
+# check if PROJECT is set
+ifndef PROJECT
+$(error PROJECT is not set. Please set PROJECT to the name of the directory.)
+endif
 
 # Docker
 
 DKRLatexMarker:=.docker/latex.marker
 DKRLatexDockerfile:=.docker/latex.Dockerfile
-DKRLatexTag:=syoch/texlive
-DKRLatex:=docker run -it --rm -v $(PWD)/$(LATEX_ROOT):/work -w /work $(DKRLatexTag)
+DKRLatexTag:=latex-devcontainer/texlive
+DKRLatex:=docker run --rm -v $(PWD)/$(LATEX_ROOT):/work -w /work $(DKRLatexTag)
 $(DKRLatexMarker): $(DKRLatexDockerfile)
 	docker build -t $(DKRLatexTag) -f $(DKRLatexDockerfile) .docker
 	touch $(DKRLatexMarker)
 
 DKRDrawioTag:=rlespinasse/drawio-desktop-headless
-DKRDrawio:=docker run -it --rm -v $(PWD):/work -w /work $(DKRDrawioTag)
+DKRDrawio:=docker run --rm -v $(PWD):/work -w /work $(DKRDrawioTag)
 
 # Detection
 
